@@ -1,0 +1,9 @@
+{% include '../layouts/Header.html' %}
+
+<h2>register</h2>
+
+<form action="/register/" method="POST">
+  {% csrf_token %} {{ form }}
+  <button type="submit">Sing Up</button>
+</form>
+{% include '../layouts/Footer.html' %}
