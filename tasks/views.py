@@ -55,6 +55,6 @@ def register(request):
 def tasks(request):
     """Tasks."""
     title = 'Tasks'
-    return render(request, 'lib/Tasks.html', {
+    return render(request, 'pages/Tasks.html', {
         'title': title
     })
