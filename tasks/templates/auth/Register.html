@@ -1,7 +1,7 @@
 {% include '../layouts/Header.html' %}
 
 <h2>Register</h2>
-
+{{ error }}
 <form method="POST">
   {% csrf_token %} {{ form }}
   <button type="submit">Sing Up</button>

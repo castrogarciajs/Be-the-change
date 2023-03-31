@@ -1,9 +1,9 @@
 """django."""
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
-from django.http import HttpResponse
-
+from django.contrib.auth import login
+from django.db import IntegrityError
 # Create your views here.
 
 
@@ -31,14 +31,30 @@ def register(request):
                     password=password
                 )
                 user.save()
-                return HttpResponse('USER SUCCESFULLY')
-            except ValueError as error_message:
-                print(error_message)
-                return HttpResponse('USER EXISTS')
+                login(request, user)
+                return redirect('tasks')
+            except IntegrityError:
+                return render(request, 'auth/Register.html', {
+                    'title': title,
+                    'form': UserCreationForm,
+                    'error': 'El usuario ya existe'
+                })
 
-        return HttpResponse('PASSWORD NOT MATCH')
+        return render(request, 'auth/Register.html', {
+            'title': title,
+            'form': UserCreationForm,
+            'error': 'La contraseña no coincide'
+        })
 
     return render(request, 'auth/Register.html', {
         'title': title,
         'form': UserCreationForm
+    })
+
+
+def tasks(request):
+    """Tasks."""
+    title = 'Tasks'
+    return render(request, 'lib/Tasks.html', {
+        'title': title
     })
