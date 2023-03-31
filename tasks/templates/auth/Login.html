@@ -1,0 +1,8 @@
+{% include '../layouts/Header.html' %} {% include './../partials/Navbar.html' %}
+<h2>sing in</h2>
+{{ error }}
+<form method="POST">
+  {% csrf_token %} {{ form }}
+  <button type="submit">Login</button>
+</form>
+{% include '../layouts/Footer.html' %}
