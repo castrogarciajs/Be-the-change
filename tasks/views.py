@@ -4,6 +4,7 @@ from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth.models import User
 from django.contrib.auth import login, logout, authenticate
 from django.db import IntegrityError
+from .forms import CreateTask
 # Create your views here.
 
 
@@ -88,4 +89,12 @@ def tasks(request):
     title = 'Tasks'
     return render(request, 'pages/Tasks.html', {
         'title': title
+    })
+
+def save_task(request):
+    """Created."""
+    title = 'Sv - Task'
+    return render(request, 'pages/Create_Task.html', {
+        'title': title,
+        'form': CreateTask,
     })

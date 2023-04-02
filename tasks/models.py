@@ -13,3 +13,6 @@ class Task(models.Model):
     completed = models.DateTimeField(null=True)
     important = models.BooleanField(default=False)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
+
+    def __str__(self) -> str:
+        return f"{self.title} - by {self.user.username}"

@@ -1,0 +1,8 @@
+{% include '../layouts/Header.html' %} {% include './../partials/Navbar.html' %}
+
+<form action="">
+  {% csrf_token %}
+  {{form}}
+  <button type="submit"></button>
+</form>
+{% include '../layouts/Footer.html' %}
