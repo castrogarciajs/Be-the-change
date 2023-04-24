@@ -6,6 +6,7 @@ from django.contrib.auth import login, logout, authenticate
 from django.db import IntegrityError
 from .forms import CreateTask
 from .models import Task
+from django.utils import timezone
 
 # Create your views here.
 
@@ -138,3 +139,18 @@ def task_by_id(request, id):
                 'form': form,
                 'error': 'hubo un error actulizando'
             })
+
+
+def complete_task(request, id):
+    task = get_object_or_404(Task, pk=id, user=request.user)
+    if request.method == 'POST':
+        task.completed = timezone.now()
+        task.save()
+        return redirect("tasks")
+
+
+def delete_task(request, id):
+    task = get_object_or_404(Task, pk=id, user=request.user)
+    if request.method == 'POST':
+        task.delete()
+        return redirect("tasks")
