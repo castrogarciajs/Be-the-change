@@ -7,7 +7,7 @@ from django.db import IntegrityError
 from .forms import CreateTask
 from .models import Task
 from django.utils import timezone
-
+from django.contrib.auth.decorators import login_required
 # Create your views here.
 
 
@@ -87,6 +87,7 @@ def login_user(request):
     })
 
 
+@login_required
 def tasks(request):
     """Tasks."""
     title = 'Tasks'
@@ -97,6 +98,7 @@ def tasks(request):
     })
 
 
+@login_required
 def save_task(request):
     """Created."""
     title = 'Sv - Task'
@@ -116,6 +118,7 @@ def save_task(request):
     })
 
 
+@login_required
 def task_by_id(request, id):
     title = f"Task - By {id}"
     if request.method == 'GET':
@@ -141,6 +144,7 @@ def task_by_id(request, id):
             })
 
 
+@login_required
 def complete_task(request, id):
     task = get_object_or_404(Task, pk=id, user=request.user)
     if request.method == 'POST':
@@ -149,6 +153,7 @@ def complete_task(request, id):
         return redirect("tasks")
 
 
+@login_required
 def delete_task(request, id):
     task = get_object_or_404(Task, pk=id, user=request.user)
     if request.method == 'POST':
@@ -156,6 +161,7 @@ def delete_task(request, id):
         return redirect("tasks")
 
 
+@login_required
 def tasks_completed(request):
     """Tasks."""
     title = 'Tasks'
