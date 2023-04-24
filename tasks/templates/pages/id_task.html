@@ -1,4 +1,10 @@
 {% include '../layouts/Header.html' %} {% include './../partials/Navbar.html' %}
 <h2>{{task.title}}</h2>
 
+<form method="POST">
+  <h2>{{error}}</h2>
+  {% csrf_token %} {{form}}
+  <button type="submit">Actulizar</button>
+</form>
+
 {% include '../layouts/Footer.html' %}

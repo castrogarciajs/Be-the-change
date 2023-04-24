@@ -117,8 +117,24 @@ def save_task(request):
 
 def task_by_id(request, id):
     title = f"Task - By {id}"
-    task = get_object_or_404(Task, pk=id)
-    return render(request, 'pages/id_task.html', {
-        'title': title,
-        'task': task
-    })
+    if request.method == 'GET':
+        task = get_object_or_404(Task, pk=id, user=request.user)
+        form = CreateTask(instance=task)
+        return render(request, 'pages/id_task.html', {
+            'title': title,
+            'task': task,
+            'form': form
+        })
+    else:
+        try:
+            task = get_object_or_404(Task, pk=id, user=request.user)
+            form = CreateTask(request.POST, instance=task)
+            form.save()
+            return redirect("tasks")
+        except ValueError:
+            return render(request, 'pages/id_task.html', {
+                'title': title,
+                'task': task,
+                'form': form,
+                'error': 'hubo un error actulizando'
+            })
