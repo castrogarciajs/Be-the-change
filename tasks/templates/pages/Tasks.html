@@ -16,6 +16,7 @@
     <div>
       <p>{{task.description}}</p>
       <span>{{task.user.username}}</span>
+      <time>{{task.completed|date:'M j Y:i'}}</time>
     </div>
   </a>
   {% endfor %}
