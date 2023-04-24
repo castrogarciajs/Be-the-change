@@ -3,19 +3,21 @@
 
 <div>
   {% for task in tasks %}
-  <div>
-    {% if task.important %}
-    <h2>
-      <mark>{{task.title}}</mark>
-    </h2>
-    {% else %}
-    <h2>{{task.title}}</h2>
-    {% endif %}
-  </div>
-  <div>
-    <p>{{task.description}}</p>
-    <span>{{task.user.username}}</span>
-  </div>
+  <a href="{% url 'id' task.id %}" style="text-decoration: none">
+    <div>
+      {% if task.important %}
+      <h2>
+        <mark>{{task.title}}</mark>
+      </h2>
+      {% else %}
+      <h2>{{task.title}}</h2>
+      {% endif %}
+    </div>
+    <div>
+      <p>{{task.description}}</p>
+      <span>{{task.user.username}}</span>
+    </div>
+  </a>
   {% endfor %}
 </div>
 {% include '../layouts/Footer.html' %}
