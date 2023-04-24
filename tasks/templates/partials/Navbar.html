@@ -5,7 +5,10 @@
     </li>
     {% if user.is_authenticated %}
     <li>
-      <a href="/tasks/">Tasks</a>
+      <a href="/tasks/">Tasks pending</a>
+    </li>
+    <li>
+      <a href="/tasks/completed/">Tasks Completed</a>
     </li>
     <li>
       <a href="/create/task/">Public Task</a>
