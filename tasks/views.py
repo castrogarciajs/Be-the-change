@@ -92,9 +92,20 @@ def tasks(request):
         'title': title
     })
 
+
 def save_task(request):
     """Created."""
     title = 'Sv - Task'
+    if request.method == 'POST':
+        try:
+            form = CreateTask(request.POST)
+            task = form.save(commit=False)
+            task.user = request.user
+            task.save()
+            return redirect('tasks')
+        except ValueError:
+            print("Hubo un error")
+            return ValueError
     return render(request, 'pages/Create_Task.html', {
         'title': title,
         'form': CreateTask,
