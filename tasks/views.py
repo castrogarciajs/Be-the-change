@@ -5,6 +5,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth import login, logout, authenticate
 from django.db import IntegrityError
 from .forms import CreateTask
+from .models import Task
 
 # Create your views here.
 
@@ -88,8 +89,10 @@ def login_user(request):
 def tasks(request):
     """Tasks."""
     title = 'Tasks'
+    tasks = Task.objects.filter(user=request.user, completed__isnull=True)
     return render(request, 'pages/Tasks.html', {
-        'title': title
+        'title': title,
+        'tasks': tasks
     })
 
 
