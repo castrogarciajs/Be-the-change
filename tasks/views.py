@@ -1,5 +1,5 @@
 """django."""
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth.models import User
 from django.contrib.auth import login, logout, authenticate
@@ -112,4 +112,13 @@ def save_task(request):
     return render(request, 'pages/Create_Task.html', {
         'title': title,
         'form': CreateTask,
+    })
+
+
+def task_by_id(request, id):
+    title = f"Task - By {id}"
+    task = get_object_or_404(Task, pk=id)
+    return render(request, 'pages/id_task.html', {
+        'title': title,
+        'task': task
     })

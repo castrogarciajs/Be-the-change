@@ -3,11 +3,13 @@
     <li>
       <a href="/">Home</a>
     </li>
-
+    {% if user.is_authenticated %}
     <li>
       <a href="/tasks/">Tasks</a>
     </li>
-    {% if user.is_authenticated %}
+    <li>
+      <a href="/create/task/">Public Task</a>
+    </li>
     <li>
       <a href="/logout/">logout</a>
     </li>
