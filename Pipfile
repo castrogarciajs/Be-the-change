@@ -5,6 +5,10 @@ name = "pip_conf_index_global"
 
 [packages]
 django = "*"
+dj-database-url = "*"
+psycopg2-binary = "*"
+whitenoise = {extras = ["brotli"], version = "*"}
+gunicorn = "*"
 
 [dev-packages]
 autopep8 = "*"
