@@ -1,8 +1,35 @@
 {% include '../layouts/Header.html' %} {% include './../partials/Navbar.html' %}
-<h2>sing in</h2>
-{{ error }}
-<form method="POST">
-  {% csrf_token %} {{ form }}
-  <button type="submit">Login</button>
-</form>
+<main class="container py-5">
+  <div class="row">
+    <div class="col-md-4 offset-md-4">
+      <h2 class="display-4">Login</h2>
+      <form method="POST" class="card card-body">
+        {{ error }} {% csrf_token %}
+        <div class="mb-3">
+          <label for="username">username</label>
+          <input
+            type="text"
+            name="username"
+            id="usernmae"
+            placeholder="Jhon Doe"
+            class="form-control"
+            autocomplete="off"
+          />
+        </div>
+        <div class="mb-3">
+          <label for="password">password</label>
+          <input
+            type="password"
+            class="form-control"
+            id="password"
+            name="password"
+            placeholder="write your password"
+            autocomplete="off"
+          />
+        </div>
+        <button type="submit" class="btn btn-success">Login</button>
+      </form>
+    </div>
+  </div>
+</main>
 {% include '../layouts/Footer.html' %}
