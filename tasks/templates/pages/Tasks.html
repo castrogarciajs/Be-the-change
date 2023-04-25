@@ -1,24 +1,31 @@
 {% include '../layouts/Header.html' %} {% include './../partials/Navbar.html' %}
-<h2>{{ header }}</h2>
-
-<div>
-  {% for task in tasks %}
-  <a href="{% url 'id' task.id %}" style="text-decoration: none">
-    <div>
-      {% if task.important %}
-      <h2>
-        <mark>{{task.title}}</mark>
-      </h2>
-      {% else %}
-      <h2>{{task.title}}</h2>
-      {% endif %}
+<main class="container py-5">
+  <h2 class="display-2 text-center mb-5">{{ header }}</h2>
+  <div class="row">
+    <div class="col-md-4 offset-md-4">
+      {% for task in tasks %}
+      <a
+        href="{% url 'id' task.id %}"
+        style="text-decoration: none"
+        class="card"
+      >
+        <div class="card-header">
+          {% if task.important %}
+          <h2 class="mb-3 mt-3">
+            <b style="color: #00ff00">{{task.title}}</b>
+          </h2>
+          {% else %}
+          <h2 class="mb-3 mt-3">{{task.title}}</h2>
+          {% endif %}
+        </div>
+        <div class="card-body">
+          <p>{{task.description}}</p>
+          <b><span>{{task.user.username}}</span></b>
+          <b><time>{{task.completed|date:'M j Y:i'}}</time></b>
+        </div>
+      </a>
+      {% endfor %}
     </div>
-    <div>
-      <p>{{task.description}}</p>
-      <span>{{task.user.username}}</span>
-      <time>{{task.completed|date:'M j Y:i'}}</time>
-    </div>
-  </a>
-  {% endfor %}
-</div>
+  </div>
+</main>
 {% include '../layouts/Footer.html' %}
