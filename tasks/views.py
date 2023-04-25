@@ -91,10 +91,12 @@ def login_user(request):
 def tasks(request):
     """Tasks."""
     title = 'Tasks'
+    header = 'tareas pendientes'
     tasks = Task.objects.filter(user=request.user, completed__isnull=True)
     return render(request, 'pages/Tasks.html', {
         'title': title,
-        'tasks': tasks
+        'tasks': tasks,
+        'header': header
     })
 
 
@@ -165,9 +167,11 @@ def delete_task(request, id):
 def tasks_completed(request):
     """Tasks."""
     title = 'Tasks'
+    header = 'tareas completadas'
     tasks = Task.objects.filter(
         user=request.user, completed__isnull=False).order_by('-completed')
     return render(request, 'pages/Tasks.html', {
         'title': title,
-        'tasks': tasks
+        'tasks': tasks,
+        'header': header
     })
