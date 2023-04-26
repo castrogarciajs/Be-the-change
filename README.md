@@ -24,3 +24,24 @@ python manage.py runserver 8080
 3.  Vista en el puerto: 8080
 
 ![django](https://i.postimg.cc/ryPYQsLF/django.png)
+
+## Endpoints
+
+1. Autenticación
+
+- `/`: Ruta principal
+- `login/`: Ruta de iniciar sesion
+- `register/`: Ruta de registrarse
+- `logout/`: Cerrar session
+
+2. Dashboard
+
+- `create/task/`: Crear tareas
+- `tasks/`: Tus tareas
+- `tasks/completed/`: Tareas completada
+
+3. id
+
+- `task/<int:id>`: Tarea por id
+- `task/<int:id>/complete`: Tareas completada por id
+- `task/<int:id>/delete`: Eliminar tarea por id
