@@ -53,6 +53,7 @@ python manage.py runserver 8080
 ## Autor
 
 - Johan Sebastian castro Garcia
+  <br>
   `Github`: sebastian01w
   <br>
   `Email`: johancs.mm@gmail.com
