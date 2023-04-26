@@ -54,4 +54,5 @@ python manage.py runserver 8080
 
 - Johan Sebastian castro Garcia
   `Github`: sebastian01w
+  <br>
   `Email`: johancs.mm@gmail.com
