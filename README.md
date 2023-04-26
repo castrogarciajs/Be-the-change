@@ -45,3 +45,13 @@ python manage.py runserver 8080
 - `task/<int:id>`: Tarea por id
 - `task/<int:id>/complete`: Tareas completada por id
 - `task/<int:id>/delete`: Eliminar tarea por id
+
+## LICENSE
+
+- Este proyecto esta bajo la `LICENSE` MIT sientete libre de hacer con lo que gustes y expandes tus ideas
+
+## Autor
+
+- Johan Sebastian castro Garcia
+  `Github`: sebastian01w
+  `Email`: johancs.mm@gmail.com
